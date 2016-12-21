@@ -10,11 +10,17 @@ window.jQuery = $; // Assign to global window object
 require('hammerjs');
 require('jquery-hammerjs');
 
+// GH-Pages publishing
+let ghpages = require('gh-pages');
+let path = require('path');
+ 
+// ghpages.publish(path.join(__dirname, '/.'), function(err) { ... });
+
 // Internal Scripts
 // require('./global.js');
 
 // let GLYPH = require('./p5/sketch.js');
-let _mobile = false; // Boolean for mobile devices
+// let _mobile = false; // Boolean for mobile devices
 
 // Activation Function
 $(document).ready(function () {

@@ -3,9 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "deploy": "ghpages",
-    "ghpages": "ghpages"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "babel": "^5.8.23",
@@ -30,6 +28,7 @@
     "multer": "^1.1.0",
     "node.extend": "^1.1.5",
     "p5": "*",
+    "path": "^0.12.7",
     "propagating-hammerjs": "^1.4.3",
     "pug": "^2.0.0-beta5",
     "pug-runtime": "^2.0.2",
@@ -49,6 +48,7 @@
     "browserify": "^11.2.0",
     "browserify-shim": "^3.8.10",
     "budo": "^9.3.0",
+    "gh-pages": "^0.12.0",
     "ghpages": "0.0.8",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
@@ -56,6 +56,7 @@
     "gulp-browserify": "^0.5.1",
     "gulp-clean-css": "^2.0.6",
     "gulp-concat": "^2.6.0",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-postcss": "^6.2.0",
     "gulp-print": "^1.1.0",
     "gulp-pug": "^3.0.4",

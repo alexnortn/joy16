@@ -19,8 +19,8 @@ let argv = require('yargs').argv,
     runSequence = require('run-sequence'),
     babel = require("gulp-babel"),
     shell = require('gulp-shell'),
+    deploy = require('gulp-gh-pages'),
     GulpSSH = require('gulp-ssh'),
-    //sprite = require('gulp-node-spritesheet'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
     gutil = require('gulp-util'),
@@ -41,6 +41,14 @@ gulp.task('default', ['build']);
 
 // Removed "pug"
 gulp.task('build', [ 'images', 'js', 'css', 'fonts', 'plugins']);
+
+
+
+//  // Push build to gh-pages
+// gulp.task('deploy', function () {
+//   return gulp.src("./dist/**/*")
+//     .pipe(deploy())
+// });
 
 
 gulp.task('images', [ ], function () {
