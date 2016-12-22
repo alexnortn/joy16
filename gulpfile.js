@@ -40,7 +40,7 @@ let BASEURL = argv.production
 gulp.task('default', ['build']);
 
 // Removed "pug"
-gulp.task('build', [ 'images', 'js', 'css', 'fonts', 'plugins']);
+gulp.task('build', [ 'images', 'js', 'pug', 'css', 'fonts', 'plugins']);
 
 
 
@@ -67,15 +67,26 @@ gulp.task('clean', function () {
     ]);
 });
 
+// Compile pug --> JS
+// gulp.task('pug', function() {
+//     return gulp.src('views/**/*.pug')
+//         .pipe(pug({
+//             client: true,
+//         }))
+//         // replace the function definition
+//         .pipe(replace('function template(locals)', 'module.exports = function(locals, pug)'))
+//         .pipe(gulp.dest('./public/views_js'))
+// });
+
 // Compile pug --> HTML
-gulp.task('pug', function() {
-    return gulp.src('views/**/*.pug')
-        .pipe(pug({
-            client: true,
-        }))
-        // replace the function definition
-        .pipe(replace('function template(locals)', 'module.exports = function(locals, pug)'))
-        .pipe(gulp.dest('./public/views_js'))
+gulp.task('pug', function buildHTML() {
+  let YOUR_LOCALS = {};
+  return gulp.src('views/**/*.pug')
+      .pipe(pug({
+        pretty: '\t',
+        locals: YOUR_LOCALS 
+      }))
+      .pipe(gulp.dest('./public'))
 });
 
 gulp.task('js', function () {
@@ -105,7 +116,7 @@ gulp.task('js', function () {
 
 gulp.task('css', [ ], function () {
     gulp.src([
-        'assets/css/normalize.css',
+        'assets/css/normalize.styl',
         'assets/css/main.styl',
         'assets/css/*.css',
     ])
