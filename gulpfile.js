@@ -19,8 +19,8 @@ let argv = require('yargs').argv,
     runSequence = require('run-sequence'),
     babel = require("gulp-babel"),
     shell = require('gulp-shell'),
+    deploy = require('gulp-gh-pages'),
     GulpSSH = require('gulp-ssh'),
-    //sprite = require('gulp-node-spritesheet'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
     gutil = require('gulp-util'),
@@ -40,7 +40,15 @@ let BASEURL = argv.production
 gulp.task('default', ['build']);
 
 // Removed "pug"
-gulp.task('build', [ 'images', 'js', 'css', 'fonts', 'plugins']);
+gulp.task('build', [ 'images', 'js', 'pug', 'css', 'fonts', 'plugins']);
+
+
+
+//  // Push build to gh-pages
+// gulp.task('deploy', function () {
+//   return gulp.src("./dist/**/*")
+//     .pipe(deploy())
+// });
 
 
 gulp.task('images', [ ], function () {
@@ -59,15 +67,26 @@ gulp.task('clean', function () {
     ]);
 });
 
+// Compile pug --> JS
+// gulp.task('pug', function() {
+//     return gulp.src('views/**/*.pug')
+//         .pipe(pug({
+//             client: true,
+//         }))
+//         // replace the function definition
+//         .pipe(replace('function template(locals)', 'module.exports = function(locals, pug)'))
+//         .pipe(gulp.dest('./public/views_js'))
+// });
+
 // Compile pug --> HTML
-gulp.task('pug', function() {
-    return gulp.src('views/**/*.pug')
-        .pipe(pug({
-            client: true,
-        }))
-        // replace the function definition
-        .pipe(replace('function template(locals)', 'module.exports = function(locals, pug)'))
-        .pipe(gulp.dest('./public/views_js'))
+gulp.task('pug', function buildHTML() {
+  let YOUR_LOCALS = {};
+  return gulp.src('views/**/*.pug')
+      .pipe(pug({
+        pretty: '\t',
+        locals: YOUR_LOCALS 
+      }))
+      .pipe(gulp.dest('./public'))
 });
 
 gulp.task('js', function () {
@@ -97,7 +116,7 @@ gulp.task('js', function () {
 
 gulp.task('css', [ ], function () {
     gulp.src([
-        'assets/css/normalize.css',
+        'assets/css/normalize.styl',
         'assets/css/main.styl',
         'assets/css/*.css',
     ])

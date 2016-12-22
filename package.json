@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "budo --live --verbose --port 3000 --open",
     "deploy": "ghpages",
     "ghpages": "ghpages"
   },
@@ -30,6 +30,7 @@
     "multer": "^1.1.0",
     "node.extend": "^1.1.5",
     "p5": "*",
+    "path": "^0.12.7",
     "propagating-hammerjs": "^1.4.3",
     "pug": "^2.0.0-beta5",
     "pug-runtime": "^2.0.2",
@@ -57,6 +58,7 @@
     "gulp-browserify": "^0.5.1",
     "gulp-clean-css": "^2.0.6",
     "gulp-concat": "^2.6.0",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-postcss": "^6.2.0",
     "gulp-print": "^1.1.0",
     "gulp-pug": "^3.0.4",
