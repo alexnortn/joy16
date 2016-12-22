@@ -14,7 +14,7 @@ require('jquery-hammerjs');
 let ghpages = require('gh-pages');
 let path = require('path');
  
-ghpages.publish(path.join(__dirname, 'public'), callback);
+ghpages.publish(path.join(__dirname, 'build'), callback);
 
 // Internal Scripts
 // require('./global.js');

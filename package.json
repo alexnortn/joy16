@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "budo --live --verbose --port 3000 --open",
+    "start": "cd public; Python -m SimpleHTTPServer 8001",
     "deploy": "ghpages",
     "ghpages": "ghpages"
   },
